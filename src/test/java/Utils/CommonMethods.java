@@ -14,7 +14,9 @@ public class CommonMethods {
 
     public static void openBrowserAndLaunchApplication() {
 
-        String browserType = "Chrome";
+        ConfigReader.readProperties();
+
+        String browserType = ConfigReader.getPropertiesValue("browserType");
         switch (browserType) {
             case "Chrome":
                 driver = new ChromeDriver();
@@ -31,7 +33,7 @@ public class CommonMethods {
         }
 
         driver.manage().window().maximize();
-        driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
+        driver.get(ConfigReader.getPropertiesValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
     }
 
