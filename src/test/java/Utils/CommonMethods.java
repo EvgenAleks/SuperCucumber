@@ -2,6 +2,7 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -24,10 +25,18 @@ public class CommonMethods {
             case "IE":
                 driver = new InternetExplorerDriver();
                 break;
+            default:
+                driver = new EdgeDriver();
+                break;
         }
 
         driver.manage().window().maximize();
         driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
+    }
+
+    public static void closeBrowser() {
+
+        driver.close();
     }
 }

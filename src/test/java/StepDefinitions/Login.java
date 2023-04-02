@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import Utils.CommonMethods;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,11 +14,12 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 
-public class Login {
+public class Login extends CommonMethods {
 
     @Given("open the browser and launch HRMS application")
     public void open_the_browser_and_launch_hrms_application() {
 
+        openBrowserAndLaunchApplication();
     }
 
     @When("user enters valid email and valid password")
@@ -41,6 +43,7 @@ public class Login {
 
     @Then("close the browser")
     public void close_the_browser() {
-        driver.close();
+
+        closeBrowser();
     }
 }
