@@ -14,27 +14,10 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Login {
-    WebDriver driver;
 
     @Given("open the browser and launch HRMS application")
     public void open_the_browser_and_launch_hrms_application() {
 
-        String browserType = "Chrome";
-        switch (browserType) {
-            case "Chrome":
-                driver = new ChromeDriver();
-                break;
-            case "Firefox":
-                driver = new FirefoxDriver();
-                break;
-            case "IE":
-                driver = new InternetExplorerDriver();
-                break;
-        }
-
-        driver.manage().window().maximize();
-        driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
     }
 
     @When("user enters valid email and valid password")
