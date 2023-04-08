@@ -1,6 +1,6 @@
 Feature: Add a new employee
 
-  @testcase2 @smoke @regression
+  @smoke
   Scenario: Adding a new employee
     Given open the browser and launch HRMS application
     When user enters valid email and valid password
@@ -9,3 +9,4 @@ Feature: Add a new employee
     And user clicks on add employee button
     And user enters firstname and middle name and lastname
     #And user clicks on save button
+    And close the browser

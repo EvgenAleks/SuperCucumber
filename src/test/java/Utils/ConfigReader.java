@@ -22,7 +22,7 @@ public class ConfigReader {
         return prop;
     }
 
-    public static String getPropertiesValue(String propKey) {
+    public static String getPropertyValue(String propKey) {
         return prop.getProperty(propKey);
     }
 }
