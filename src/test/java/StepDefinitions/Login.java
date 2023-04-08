@@ -18,11 +18,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Login extends CommonMethods {
 
-    @Given("open the browser and launch HRMS application")
-    public void open_the_browser_and_launch_hrms_application() {
-
-        openBrowserAndLaunchApplication();
-    }
+//    @Given("open the browser and launch HRMS application")
+//    public void open_the_browser_and_launch_hrms_application() {
+//
+//        openBrowserAndLaunchApplication();
+//    }
 
     @When("user enters valid email and valid password")
     public void user_enters_valid_email_and_valid_password() {
@@ -46,9 +46,9 @@ public class Login extends CommonMethods {
         }
     }
 
-    @Then("close the browser")
-    public void close_the_browser() {
-
-        closeBrowser();
-    }
+//    @Then("close the browser")
+//    public void close_the_browser() {
+//
+//        closeBrowser();
+//    }
 }
