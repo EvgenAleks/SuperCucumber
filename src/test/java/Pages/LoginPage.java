@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends CommonMethods {
 
     public LoginPage() {
+
         PageFactory.initElements(driver, this);
     }
 
