@@ -1,14 +1,19 @@
 package StepDefinitions;
 
+import Pages.AddEmployeePage;
 import Pages.LoginPage;
+import com.beust.ah.A;
 
 public class PageInitializer {
 
     public static LoginPage login;
+    public static AddEmployeePage addEmployeePage;
+
 
     public static void initalizePageObjects() {
 
         login = new LoginPage();
+        addEmployeePage = new AddEmployeePage();
     }
 }
 
