@@ -13,6 +13,7 @@ public class Hooks extends CommonMethods {
 
     @After
     public void postConditions() {
+        
         closeBrowser();
     }
 }

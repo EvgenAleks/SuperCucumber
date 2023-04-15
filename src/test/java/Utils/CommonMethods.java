@@ -2,6 +2,9 @@ package Utils;
 
 import StepDefinitions.PageInitializer;
 import io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +13,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 
 public class CommonMethods extends PageInitializer {
@@ -41,7 +48,7 @@ public class CommonMethods extends PageInitializer {
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
         initalizePageObjects();  // This will initialize all the pages we have in our Page
-                                 // PageInitializer class along with the launching of application
+        // PageInitializer class along with the launching of application
     }
 
     public static void closeBrowser() {
@@ -83,4 +90,31 @@ public class CommonMethods extends PageInitializer {
             }
         }
     }
+
+    // Screenshot*********************************
+
+    public static byte[] takeScreenshot(String imageName) {
+
+//        This casts the WebDriver instance "driver" to TakeScreenshot Interface
+        TakesScreenshot ts = (TakesScreenshot) driver;
+//        This captures the screenshot and stores it as byte array
+        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
+
+        File sourcePath = ts.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(sourcePath, new File(Constants.SCREENSHOT_FILEPATH + imageName + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return picBytes;
+    }
+
+
+    public static String getTimeStamp(String pattern) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        return sdf.format(date);
+    }
 }
+
