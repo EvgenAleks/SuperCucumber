@@ -1,6 +1,6 @@
 Feature: Add a new employee
 
-  @smoke2
+  @smoke2 @test2
   Scenario: Adding a new employee
     #Given open the browser and launch HRMS application
     When user enters valid email and valid password
