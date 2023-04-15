@@ -31,7 +31,7 @@ public class Login extends CommonMethods {
     @When("user enters valid email and valid password")
     public void user_enters_valid_email_and_valid_password() {
 
-        LoginPage login = new LoginPage();
+//        LoginPage login = new LoginPage();
 
 //        WebElement userNameTextBox = driver.findElement(By.id("txtUsername"));
         sendText(login.userNameTextBox, ConfigReader.getPropertyValue("username"));
@@ -42,7 +42,7 @@ public class Login extends CommonMethods {
     @When("click on login button")
     public void click_on_login_button() {
 
-        LoginPage login = new LoginPage();
+//        LoginPage login = new LoginPage();
 
 //        WebElement loginBtn = driver.findElement(By.id("btnLogin"));
         doClick(login.loginBtn);
@@ -59,7 +59,7 @@ public class Login extends CommonMethods {
     @When("user enters valid {string} and valid {string}")
     public void user_enters_valid_and_valid(String username, String password) {
 
-        LoginPage login = new LoginPage();
+//        LoginPage login = new LoginPage();
 
 //        WebElement userNameTextBox = driver.findElement(By.id("txtUsername"));
         sendText(login.userNameTextBox, username);
@@ -76,7 +76,7 @@ public class Login extends CommonMethods {
     @When("user enters valid username and password and verifies login")
     public void user_enters_valid_username_and_password_and_verifies_login(DataTable dataTable) {
 
-        LoginPage login = new LoginPage();
+//        LoginPage login = new LoginPage();
 
         List<Map<String, String>> userCredentials = dataTable.asMaps();
         for (Map<String, String> userCreds : userCredentials) {
