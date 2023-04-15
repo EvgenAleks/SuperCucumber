@@ -94,7 +94,7 @@ public class Login extends CommonMethods {
             doClick(login.welcomeIcon);
 
 //            WebElement logoutLink = driver.findElement(By.xpath("//a[text()='Logout']"));
-            doClick(login.logoutLink);
+//            doClick(login.logoutLink);
         }
     }
 }
