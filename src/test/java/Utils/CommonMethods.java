@@ -87,6 +87,7 @@ public class CommonMethods extends PageInitializer {
     }
 
     public static void selectByIndex(WebElement element, int index) {
+
         clickOnDropdown(element).selectByIndex(index);
     }
 
