@@ -5,6 +5,8 @@ Feature: API workflow for HRMS
 
   @api
   Scenario: Create an employee using API call
-    Given Request is prepared to create an employee
-    When POST call is made to create an employee
-    Then The status code for creating an employee is 201
+    Given the request is prepared to create an employee
+    When the POST call is made to create an employee
+    Then the status code for creating an employee is 201
+    Then the employee contains key "Message" and value "Employee Created"
+    Then the employee ID "Employee.employee_id" is stored as a global variable to be used for other calls
