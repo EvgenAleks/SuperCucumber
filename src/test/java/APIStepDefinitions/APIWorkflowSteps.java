@@ -1,5 +1,7 @@
 package APIStepDefinitions;
 
+import Utils.APIConstants;
+import Utils.APIPayloadConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,22 +20,14 @@ public class APIWorkflowSteps {
     @Given("the request is prepared to create an employee")
     public void request_is_prepared_to_create_an_employee() {
         request = given().
-                header("Content-Type", "application/json").
-                header("Authorization", GenerateTokenSteps.token).
-                body("{\n" +
-                        "  \"emp_firstname\": \"jon\",\n" +
-                        "  \"emp_lastname\": \"jovi\",\n" +
-                        "  \"emp_middle_name\": \"bon\",\n" +
-                        "  \"emp_gender\": \"M\",\n" +
-                        "  \"emp_birthday\": \"2010-05-20\",\n" +
-                        "  \"emp_status\": \"Confirmed\",\n" +
-                        "  \"emp_job_title\": \"Songwriter\"\n" +
-                        "}");
+                header(APIConstants.HEADER_KEY_CONTENT_TYPE, APIConstants.HEADER_VALUE_CONTENT_TYPE).
+                header(APIConstants.HEADER_KEY_AUTHORIZATION, GenerateTokenSteps.token).
+                body(APIPayloadConstants.createEmployeePayload());
     }
 
     @When("the POST call is made to create an employee")
     public void post_call_is_made_to_create_an_employee() {
-        response = request.when().post("/createEmployee.php");
+        response = request.when().post(APIConstants.CREATE_EMPLOYEE_URI);
     }
 
     @Then("the status code for creating an employee is {int}")

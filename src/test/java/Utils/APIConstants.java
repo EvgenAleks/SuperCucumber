@@ -16,4 +16,8 @@ public class APIConstants {
     public static final String DELETE_EMPLOYEE_URI = BaseURI + "/deleteEmployee.php";
     public static final String JOB_TITLE_EMPLOYEE_URI = BaseURI + "/jobTitle.php";
 
+    // constants for headers
+    public static final String HEADER_KEY_CONTENT_TYPE = "Content-Type";
+    public static final String HEADER_VALUE_CONTENT_TYPE = "application/json";
+    public static final String HEADER_KEY_AUTHORIZATION = "Authorization";
 }
