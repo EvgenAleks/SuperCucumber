@@ -9,6 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -32,7 +33,13 @@ public class CommonMethods extends PageInitializer {
         String browserType = ConfigReader.getPropertyValue("browserType");
         switch (browserType) {
             case "Chrome":
-                driver = new ChromeDriver();
+                ChromeOptions ops = new ChromeOptions();
+                ops.addArguments("--no-sandbox");
+                ops.addArguments("--remote-allow-origins=*");
+                if (ConfigReader.getPropertyValue("Headless").equals("true")) {
+                    ops.addArguments("--headless=new");
+                }
+                driver = new ChromeDriver(ops);
                 break;
             case "Firefox":
                 driver = new FirefoxDriver();
@@ -49,7 +56,7 @@ public class CommonMethods extends PageInitializer {
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
         initalizePageObjects();  // This will initialize all the pages we have in our Page
-                                 // PageInitializer class along with the launching of application
+        // PageInitializer class along with the launching of application
         // To configure the file and pattern it has
         DOMConfigurator.configure("log4j.xml");
         Log.startTestCase("This is the Beginning of my Test case");
